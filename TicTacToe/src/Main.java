@@ -1,16 +1,45 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
 
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+
+        Game game = new Game();
+        Player player1 = new Player("1");
+        Player player2 = new Player("2");
+        Player computerPlayer = new Player("CPU");
+
+
+            System.out.println("TIC-TAC-TOE\n");
+            System.out.println("1.PVP");
+            System.out.println("2.RULES");
+            System.out.println("0.EXIT");
+
+        Scanner input = new Scanner(System.in);
+        String userInput = input.nextLine();
+        switch (userInput) {
+            case "1":
+                game.startGame();
+                break;
+            case "2":
+                System.out.println("PVP");
+                System.out.println("Turnbased");
+                System.out.println(" 2 Symbols: Xs and Os");
+                System.out.println("You win if you get 3 symbols aligned");
+                break;
+            case "0":
+                System.out.println("Exiting Game");
+                input.close();
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid option, input correct one");
+                break;
         }
+
+
     }
+
 }
