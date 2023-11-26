@@ -1,21 +1,25 @@
 import java.util.Scanner;
 
-public class Game {
-    private Board board;
-    private Player player1;
-    private Player player2;
+public class TicTacToeGame {
+    private final Board board;
+    private final Player player1;
+    private final Player player2;
     private Player currentPlayer;
-    private Scanner input;
+    private final Scanner input;
+    private boolean gameWon;
+    private String winningPlayer;
 
-    public Game() {
+    public TicTacToeGame() {
         board = new Board();
-        player1 = new Player(Colors.GREEN_BRIGHT+ "X" + Colors.RESET);
-        player2 = new Player( Colors.RED_BRIGHT+ "𝗢" + Colors.RESET);
+        player1 = new Player(Colors.GREEN_BRIGHT + "X" + Colors.RESET);
+        player2 = new Player(Colors.RED_BRIGHT + "𝗢" + Colors.RESET);
         currentPlayer = player1;
         input = new Scanner(System.in);
+        gameWon = false;
+        winningPlayer = "";
     }
 
-    public void startGameTicTacToe() {
+    public void startGameTicTacToeOnly() {
         System.out.println("Welcome to Tic Tac Toe!");
         boolean gameOver = false;
 
@@ -34,6 +38,8 @@ public class Game {
             if (board.checkForWin(currentPlayer.getSymbol())) {
                 board.displayBoard();
                 System.out.println("Player " + currentPlayer.getSymbol() + " wins!");
+                gameWon = true;
+                winningPlayer = currentPlayer.getSymbol();
                 gameOver = true;
             } else if (board.isBoardFull()) {
                 board.displayBoard();
@@ -44,6 +50,15 @@ public class Game {
             }
         }
     }
+
+    public boolean isGameWon() {
+        return gameWon;
+    }
+
+    public String getCurrentPlayerSymbol() {
+        return winningPlayer;
+    }
+
 
     private void playerTurn(Player player) {
         System.out.println("Player " + player.getSymbol() + "'s turn:");

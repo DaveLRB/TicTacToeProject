@@ -8,8 +8,6 @@ class Player {
     public String getSymbol() {
         return symbol;
     }
-
-    public boolean makeMove(Board board, int row, int col) {
-        return board.placeMove(row, col, symbol);
-    }
 }
+
+
