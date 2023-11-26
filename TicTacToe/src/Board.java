@@ -9,30 +9,30 @@ public class Board {
 
     }
 
-    public void initializeBoard(){
+    public void initializeBoard() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                board[i][j] = " ";
+                board[i][j] = "-";
             }
         }
     }
 
     public void displayBoard() {
-        System.out.println("    1   2   3");
-        System.out.println("  -------------");
+        System.out.println(Colors.MAGENTA_BRIGHT + "    1   2   3   " + Colors.RESET);
+        System.out.println(Colors.YELLOW_BOLD_BRIGHT + "  -------------" + Colors.RESET);
         for (int i = 0; i < SIZE; i++) {
-            System.out.print((i + 1) + " | ");
+            System.out.print(Colors.MAGENTA_BRIGHT+ (Integer.toString(i + 1)) + Colors.RESET + Colors.YELLOW_BOLD_BRIGHT + " | " + Colors.RESET);
             for (int j = 0; j < SIZE; j++) {
-                System.out.print(board[i][j] + " | ");
+                System.out.print(Colors.YELLOW_BOLD_BRIGHT  + board[i][j] + " | " + Colors.RESET);
             }
             System.out.println();
-            System.out.println("  -------------");
+            System.out.println(Colors.YELLOW_BOLD_BRIGHT  + "  -------------" + Colors.RESET);
         }
     }
 
 
     public boolean isValidMove(int row, int col) {
-        return row >= 0 && row < SIZE && col >= 0 && col < SIZE && board[row][col] == " ";
+        return row >= 0 && row < SIZE && col >= 0 && col < SIZE && board[row][col] == "-";
     }
 
     public boolean checkForWin(String symbol) {
@@ -52,12 +52,6 @@ public class Board {
         return false;
     }
 
-    public void makeMove(int row, int col, String symbol) {
-        if (isValidMove(row, col)) {
-            board[row][col] = symbol;
-        }
-    }
-
 
     public boolean placeMove(int row, int col, String symbol) {
         if (isValidMove(row, col)) {
@@ -71,7 +65,7 @@ public class Board {
     public boolean isBoardFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (board[i][j].isEmpty()) {
+                if (board[i][j].equals("-")) {
                     return false;
                 }
             }
