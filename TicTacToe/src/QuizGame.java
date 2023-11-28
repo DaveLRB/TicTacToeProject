@@ -22,6 +22,11 @@ public class QuizGame {
         questions.add("What kind of animal is a platypus?");
         questions.add("How many smells can a human nose detect?");
         questions.add("Which parts of the body never stop growing?");
+        questions.add("Which color is not considered a primary color?");
+        questions.add("Louis Pasteur developed which vaccine?");
+        questions.add("Which type of blood is referred to has universal donor?");
+        questions.add("What is the total number of elements in the periodic table? ");
+        questions.add("Which is the element Au name?");
 
         choices = new HashMap<>();
         List<String> choices1 = Arrays.asList("6", "5", "4", "7");
@@ -34,11 +39,16 @@ public class QuizGame {
         List<String> choices8 = Arrays.asList("Charcoal", "Silicon", "Phosphorous", "Graphite");
         List<String> choices9 = Arrays.asList("Platinum", "Iron", "Diamond", "Copper");
         List<String> choices10 = Arrays.asList("Nitrogen", "Oxygen", "Helium", "Argon");
-        List<String> choices11 = Arrays.asList("H20","NaCl","O3","HCl");
-        List<String> choices12 = Arrays.asList("Hypoglycemia","Anosmia","Anaphia","Contusion");
-        List<String> choices13 = Arrays.asList("Mammal", "Necrophage" , "Amphibian" , "Insect");
-        List<String> choices14 = Arrays.asList("10", "10000", "250" , "1000000000");
-        List<String> choices15 = Arrays.asList("Nose and Ears", "Feet and Hands" , "Tongue and Hair" , "Fingers and Nails");
+        List<String> choices11 = Arrays.asList("H20", "NaCl", "O3", "HCl");
+        List<String> choices12 = Arrays.asList("Hypoglycemia", "Anosmia", "Anaphia", "Contusion");
+        List<String> choices13 = Arrays.asList("Mammal", "Necrophage", "Amphibian", "Insect");
+        List<String> choices14 = Arrays.asList("10", "10000", "250", "1000000000");
+        List<String> choices15 = Arrays.asList("Nose and Ears", "Feet and Hands", "Tongue and Hair", "Fingers and Nails");
+        List<String> choices16 = Arrays.asList("Blue", "Yellow", "Green", "Red");
+        List<String> choices17 = Arrays.asList("Smallpox","Polio","Rabies","Anthrax");
+        List<String> choices18 = Arrays.asList("AB+", "O-", "A-", "B+");
+        List<String> choices19 = Arrays.asList("160", "105", "118", "90");
+        List<String> choices20 = Arrays.asList("Copper","Bronze", "Platinum", "Gold");
 
 
         choices.put("How many litters of blood does an adult human being have?", choices1);
@@ -51,11 +61,16 @@ public class QuizGame {
         choices.put("Which of the following is used in pencils?", choices8);
         choices.put("What is the hardest substance known to man?", choices9);
         choices.put("What is the most common gas in Earths atmosphere?", choices10);
-        choices.put("What is the chemical symbol for salt?",choices11);
-        choices.put("What is the medical term for not being able to smell?",choices12);
-        choices.put("What kind of animal is a platypus?",choices13);
-        choices.put("How many smells can a human nose detect?",choices14);
-        choices.put("Which parts of the body never stop growing?",choices15);
+        choices.put("What is the chemical symbol for salt?", choices11);
+        choices.put("What is the medical term for not being able to smell?", choices12);
+        choices.put("What kind of animal is a platypus?", choices13);
+        choices.put("How many smells can a human nose detect?", choices14);
+        choices.put("Which parts of the body never stop growing?", choices15);
+        choices.put("Which color is not considered a primary color?", choices16);
+        choices.put("Louis Pasteur developed which vaccine?", choices17);
+        choices.put("Which type of blood is referred to has universal donor?", choices18);
+        choices.put("What is the total number of elements in the periodic table? ", choices19);
+        choices.put("Which is the element Au name?", choices20);
 
 
         answers = new HashMap<>();
@@ -69,14 +84,19 @@ public class QuizGame {
         answers.put("Which of the following is used in pencils?", "Graphite");
         answers.put("What is the hardest substance known to man?", "Diamond");
         answers.put("What is the most common gas in Earths atmosphere?", "Nitrogen");
-        answers.put("What is the chemical symbol for salt?","NaCl");
-        answers.put("What is the medical term for not being able to smell?","Anosmia");
-        answers.put("What kind of animal is a platypus?","Mammal");
-        answers.put("How many smells can a human nose detect?","1000000000");
-        answers.put("Which parts of the body never stop growing?","Nose and Ears");
+        answers.put("What is the chemical symbol for salt?", "NaCl");
+        answers.put("What is the medical term for not being able to smell?", "Anosmia");
+        answers.put("What kind of animal is a platypus?", "Mammal");
+        answers.put("How many smells can a human nose detect?", "1000000000");
+        answers.put("Which parts of the body never stop growing?", "Nose and Ears");
+        answers.put("Which color is not considered a primary color?", "Yellow");
+        answers.put("Louis Pasteur developed which vaccine?", "Rabies");
+        answers.put("Which type of blood is referred to has universal donor?", "O-");
+        answers.put("What is the total number of elements in the periodic table? ", "118");
+        answers.put("Which is the element Au name?", "Gold");
+
 
         Collections.shuffle(questions);
-
 
 
     }
