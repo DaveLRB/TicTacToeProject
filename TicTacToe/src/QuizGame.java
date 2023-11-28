@@ -41,7 +41,7 @@ public class QuizGame {
         choices.put("What is the most common gas in Earths atmosphere?", choices10);
 
         answers = new HashMap<>();
-        answers.put("How many litters of blood does an adult human being have?","5");
+        answers.put("How many litters of blood does an adult human being have?", "5");
         answers.put("What is the pH of water?", "7");
         answers.put("What is the biggest organ on the human body?", "Skin");
         answers.put("In what part of the body does most of the digestion happen?", "Small Intestine");
@@ -72,24 +72,48 @@ public class QuizGame {
 
     public boolean checkAnswer(String question, String answer) {
         String correctAnswer = answers.get(question);
+        Scanner input = new Scanner(System.in);
         if (correctAnswer != null) {
-            return correctAnswer.equalsIgnoreCase(answer);
-        }
+            int selectedIndex;
+            try {
+                selectedIndex = answer.charAt(0) - 'A';
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println("Invalid answer format. Please select a single character: A, B, C, or D.");
+                answer = input.nextLine().toUpperCase();
+                selectedIndex = answer.charAt(0) - 'A';
+            }
 
+            List<String> choiceList = choices.getOrDefault(question, Collections.emptyList());
+
+            while (!(selectedIndex >= 0 && selectedIndex < choiceList.size())) {
+                System.out.println("Invalid answer. Please select A, B, C, or D.");
+                answer = input.nextLine().toUpperCase();
+                try {
+                    selectedIndex = answer.charAt(0) - 'A';
+                } catch (StringIndexOutOfBoundsException e) {
+                    System.out.println("Invalid answer format. Please select a single character: A, B, C, or D.");
+                    answer = input.nextLine().toUpperCase();
+                    selectedIndex = answer.charAt(0) - 'A';
+                }
+            }
+
+            String selectedAnswer = choiceList.get(selectedIndex);
+            return selectedAnswer.equalsIgnoreCase(correctAnswer);
+        }
         return false;
     }
 
-
-    public void startQuizGameOnly() {
+    public void startQuizGame() {
+        System.out.println("Quiz\n");
         Scanner scanner = new Scanner(System.in);
         int questionIndex = 0;
-        boolean player1Turn = true;
-        boolean answeredCorrectly = false;
+        int player1Score = 0;
+        int player2Score = 0;
 
-        while (questionIndex < questions.size() && !answeredCorrectly) {
+        while (questionIndex < questions.size()) {
             String currentQuestion = questions.get(questionIndex);
 
-            System.out.println((player1Turn ? "Player 1" : "Player 2") + ", it's your turn:");
+            System.out.println((questionIndex % 2 == 0 ? "Player 1" : "Player 2") + ", it's your turn:");
             System.out.println(getQuestion(questionIndex));
             System.out.println("Enter your answer:");
             String answer = scanner.nextLine().toUpperCase();
@@ -97,20 +121,26 @@ public class QuizGame {
             boolean isCorrect = checkAnswer(currentQuestion, answer);
 
             if (isCorrect) {
-                System.out.println((player1Turn ? "Player 1" : "Player 2") + " wins the Quiz!");
-                answeredCorrectly = true;
+                if (questionIndex % 2 == 0) {
+                    player1Score++;
+                } else {
+                    player2Score++;
+                }
+                System.out.println("Correct answer!");
             } else {
-                System.out.println("Incorrect answer. Next player's turn.");
-                player1Turn = !player1Turn;
+                System.out.println("Incorrect answer.");
             }
 
             questionIndex++;
         }
 
-        if (!answeredCorrectly) {
-            System.out.println("All questions asked. Game over!");
+        if (player1Score > player2Score) {
+            System.out.println("Player 1 wins the Quiz with " + player1Score + " correct answers!");
+        } else if (player2Score > player1Score) {
+            System.out.println("Player 2 wins the Quiz with " + player2Score + " correct answers!");
+        } else {
+            System.out.println("It's a tie! Both players scored " + player1Score + " correct answers!");
         }
-
     }
 }
 

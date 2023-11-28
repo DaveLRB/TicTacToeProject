@@ -19,8 +19,8 @@ public class TicTacToeGame {
         winningPlayer = "";
     }
 
-    public void startGameTicTacToeOnly() {
-        System.out.println("Welcome to Tic Tac Toe!");
+    public void startGameTicTacToe() {
+        System.out.println("Tic Tac Toe!\n");
         boolean gameOver = false;
 
         while (!gameOver) {
@@ -37,13 +37,13 @@ public class TicTacToeGame {
 
             if (board.checkForWin(currentPlayer.getSymbol())) {
                 board.displayBoard();
-                System.out.println("Player " + currentPlayer.getSymbol() + " wins!");
+                System.out.println("Player " + currentPlayer.getSymbol() + " wins!\n");
                 gameWon = true;
                 winningPlayer = currentPlayer.getSymbol();
                 gameOver = true;
             } else if (board.isBoardFull()) {
                 board.displayBoard();
-                System.out.println("It's a draw!");
+                System.out.println("It's a draw!\n");
                 gameOver = true;
             } else {
                 currentPlayer = (currentPlayer == player1) ? player2 : player1;
@@ -51,9 +51,6 @@ public class TicTacToeGame {
         }
     }
 
-    public boolean isGameWon() {
-        return gameWon;
-    }
 
     public String getCurrentPlayerSymbol() {
         return winningPlayer;
