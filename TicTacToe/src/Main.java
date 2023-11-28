@@ -57,24 +57,23 @@ public class Main {
         System.out.println("0.EXIT");
     }
 
-    private static void amalgamationGame(){
+    private static void amalgamationGame() {
         TicTacToeGame ticTacToeGame = new TicTacToeGame();
         QuizGame quizGame = new QuizGame();
 
         boolean ticTacToeWon = false;
         boolean quizWon = false;
-        int currentQuestionIndex = 0; // Track the current question index
+        int currentQuestionIndex = 0;
 
-        while (!ticTacToeWon || !quizWon) {
+        while (!ticTacToeWon && !quizWon) {
             ticTacToeGame.startGameTicTacToeOnly();
 
             if (ticTacToeGame.isGameWon()) {
                 String currentPlayer = ticTacToeGame.getCurrentPlayerSymbol();
                 System.out.println("Player " + currentPlayer + " won in Tic Tac Toe! Now it's Quiz time.");
 
-                // Retrieve the current question using the index
-                String question = quizGame.getQuestion(currentQuestionIndex);
-                while (!quizWon) {
+                while (currentQuestionIndex < quizGame.questions.size() && !quizWon) {
+                    String question = quizGame.getQuestion(currentQuestionIndex);
                     String userAnswer = getUserAnswer(question);
 
                     if (quizGame.checkAnswer(question, userAnswer)) {
@@ -83,18 +82,27 @@ public class Main {
                     } else {
                         System.out.println("Incorrect Answer! Try again.");
                     }
+                    currentQuestionIndex++;
                 }
+            }
 
-                currentQuestionIndex++; // Move to the next question for the next round
+            ticTacToeWon = ticTacToeGame.isGameWon();
+
+            if (currentQuestionIndex >= quizGame.questions.size()) {
+                quizWon = true;
             }
         }
 
-        System.out.println("Both games won!");
+        if (ticTacToeWon && quizWon) {
+            System.out.println("Game won!");
+        } else {
+            System.out.println("Both games won!");
+        }
     }
 
     public static String getUserAnswer(String question) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(question);
-        return scanner.nextLine().toUpperCase();
+        return scanner.next().toUpperCase();
     }
 }

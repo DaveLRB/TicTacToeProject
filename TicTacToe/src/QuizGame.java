@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class QuizGame {
-    private List<String> questions;
+    public List<String> questions;
     private Map<String, List<String>> choices;
     private Map<String, String> answers;
 
@@ -41,7 +41,7 @@ public class QuizGame {
         choices.put("What is the most common gas in Earths atmosphere?", choices10);
 
         answers = new HashMap<>();
-        answers.put("How many litters of blood does an adult human being have?", "5");
+        answers.put("How many litters of blood does an adult human being have?","5");
         answers.put("What is the pH of water?", "7");
         answers.put("What is the biggest organ on the human body?", "Skin");
         answers.put("In what part of the body does most of the digestion happen?", "Small Intestine");
@@ -52,28 +52,33 @@ public class QuizGame {
         answers.put("What is the hardest substance known to man?", "Diamond");
         answers.put("What is the most common gas in Earths atmosphere?", "Nitrogen");
 
+
     }
 
     public String getQuestion(int i) {
-
         if (i >= 0 && i < questions.size()) {
             String question = questions.get(i);
             List<String> choiceList = choices.getOrDefault(question, Collections.emptyList());
-            StringBuilder formattedQuestion = new StringBuilder(question + "\n");
+            String formattedQuestion = question + "\n";
             char option = 'A';
             for (String choice : choiceList) {
-                formattedQuestion.append(option).append(". ").append(choice).append("\n");
+                formattedQuestion += option + ". " + choice + "\n";
                 option++;
             }
-            return formattedQuestion.toString().toUpperCase();
+            return formattedQuestion.toUpperCase();
         }
         return "No more questions.";
     }
 
     public boolean checkAnswer(String question, String answer) {
-        String correctAnswer = answers.getOrDefault(question, "").toUpperCase();
-        return correctAnswer.equalsIgnoreCase(answer);
+        String correctAnswer = answers.get(question);
+        if (correctAnswer != null) {
+            return correctAnswer.equalsIgnoreCase(answer);
+        }
+
+        return false;
     }
+
 
     public void startQuizGameOnly() {
         Scanner scanner = new Scanner(System.in);
