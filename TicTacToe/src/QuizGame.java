@@ -45,10 +45,10 @@ public class QuizGame {
         List<String> choices14 = Arrays.asList("10", "10000", "250", "1000000000");
         List<String> choices15 = Arrays.asList("Nose and Ears", "Feet and Hands", "Tongue and Hair", "Fingers and Nails");
         List<String> choices16 = Arrays.asList("Blue", "Yellow", "Green", "Red");
-        List<String> choices17 = Arrays.asList("Smallpox","Polio","Rabies","Anthrax");
+        List<String> choices17 = Arrays.asList("Smallpox", "Polio", "Rabies", "Anthrax");
         List<String> choices18 = Arrays.asList("AB+", "O-", "A-", "B+");
         List<String> choices19 = Arrays.asList("160", "105", "118", "90");
-        List<String> choices20 = Arrays.asList("Copper","Bronze", "Platinum", "Gold");
+        List<String> choices20 = Arrays.asList("Copper", "Bronze", "Platinum", "Gold");
 
 
         choices.put("How many litters of blood does an adult human being have?", choices1);
@@ -109,10 +109,10 @@ public class QuizGame {
             StringBuilder options = new StringBuilder();
             char option = 'A';
             for (String choice : choiceList) {
-                options.append(option).append(". ").append(choice).append("\n");
+                options.append(option).append(Colors.WHITE_BOLD_BRIGHT + ". " + Colors.RESET + Colors.YELLOW_BOLD_BRIGHT).append(choice).append("\n");
                 option++;
             }
-            formattedQuestion += Colors.BLUE_BOLD_BRIGHT + options.toString() + Colors.RESET;
+            formattedQuestion += Colors.YELLOW_BOLD_BRIGHT + options.toString() + Colors.RESET;
 
             return formattedQuestion;
         }
@@ -153,8 +153,8 @@ public class QuizGame {
     }
 
     public void startQuizGame() {
-        System.out.println(Colors.CYAN_BOLD_BRIGHT + "\n" +
-                "█▀█ █░█ █ ▀█\n" + Colors.BLUE_BOLD +
+        System.out.println(Colors.MAGENTA_BOLD_BRIGHT + "\n" +
+                "█▀█ █░█ █ ▀█\n" + Colors.YELLOW_BOLD_BRIGHT +
                 "▀▀█ █▄█ █ █▄\n" + Colors.RESET);
         System.out.println();
         Scanner scanner = new Scanner(System.in);
@@ -165,7 +165,7 @@ public class QuizGame {
         while (questionIndex < questions.size()) {
             String currentQuestion = questions.get(questionIndex);
 
-            System.out.println((questionIndex % 2 == 0 ? Colors.BLUE_BOLD + "Pʟᴀʏᴇʀ 1" : Colors.CYAN_BOLD + "Pʟᴀʏᴇʀ 2") + " ᴛᴜʀɴ:\n" + Colors.RESET);
+            System.out.println((questionIndex % 2 == 0 ? Colors.YELLOW_BOLD_BRIGHT + "Pʟᴀʏᴇʀ 1" : Colors.MAGENTA_BOLD_BRIGHT + "Pʟᴀʏᴇʀ 2") + " ᴛᴜʀɴ:\n" + Colors.RESET);
             System.out.println(getQuestion(questionIndex));
             System.out.println(Colors.WHITE_BRIGHT + "\uD835\uDC38\uD835\uDC5B\uD835\uDC61\uD835\uDC52\uD835\uDC5F \uD835\uDC66\uD835\uDC5C\uD835\uDC62\uD835\uDC5F \uD835\uDC4E\uD835\uDC5B\uD835\uDC60\uD835\uDC64\uD835\uDC52\uD835\uDC5F:" + Colors.RESET);
             String answer = scanner.nextLine().toUpperCase();
@@ -178,20 +178,20 @@ public class QuizGame {
                 } else {
                     player2Score++;
                 }
-                System.out.println(Colors.GREEN_BOLD_BRIGHT + "ℂ\uD835\uDD60\uD835\uDD63\uD835\uDD63\uD835\uDD56\uD835\uDD54\uD835\uDD65 \uD835\uDD52\uD835\uDD5F\uD835\uDD64\uD835\uDD68\uD835\uDD56\uD835\uDD63❕\n" + Colors.RESET);
+                System.out.println(Colors.GREEN_BOLD_BRIGHT + "\n ℂ\uD835\uDD60\uD835\uDD63\uD835\uDD63\uD835\uDD56\uD835\uDD54\uD835\uDD65 \uD835\uDD52\uD835\uDD5F\uD835\uDD64\uD835\uDD68\uD835\uDD56\uD835\uDD63!\n" + Colors.RESET);
             } else {
-                System.out.println(Colors.RED_BOLD_BRIGHT + "\uD835\uDD40\uD835\uDD5F\uD835\uDD54\uD835\uDD60\uD835\uDD63\uD835\uDD63\uD835\uDD56\uD835\uDD54\uD835\uDD65 \uD835\uDD52\uD835\uDD5F\uD835\uDD64\uD835\uDD68\uD835\uDD56\uD835\uDD63❕\n" + Colors.RESET);
+                System.out.println(Colors.RED_BOLD_BRIGHT + "\n \uD835\uDD40\uD835\uDD5F\uD835\uDD54\uD835\uDD60\uD835\uDD63\uD835\uDD63\uD835\uDD56\uD835\uDD54\uD835\uDD65 \uD835\uDD52\uD835\uDD5F\uD835\uDD64\uD835\uDD68\uD835\uDD56\uD835\uDD63!\n" + Colors.RESET);
             }
 
             questionIndex++;
         }
 
         if (player1Score > player2Score) {
-            System.out.println(Colors.GREEN_BOLD_BRIGHT + "\uD835\uDE7F\uD835\uDE95\uD835\uDE8A\uD835\uDEA2\uD835\uDE8E\uD835\uDE9B \uD835\uDFF7 \uD835\uDEA0\uD835\uDE92\uD835\uDE97\uD835\uDE9C \uD835\uDE9D\uD835\uDE91\uD835\uDE8E \uD835\uDE80\uD835\uDE9E\uD835\uDE92\uD835\uDEA3 \uD835\uDEA0\uD835\uDE92\uD835\uDE9D\uD835\uDE91 " + player1Score + Colors.RESET + Colors.GREEN_BOLD_BRIGHT + " \uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC2B\uD835\uDC1E\uD835\uDC1C\uD835\uDC2D \uD835\uDC1A\uD835\uDC27\uD835\uDC2C\uD835\uDC30\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C❗\n\n" + Colors.RESET);
+            System.out.println(Colors.YELLOW_BOLD_BRIGHT + "\uD835\uDE7F\uD835\uDE95\uD835\uDE8A\uD835\uDEA2\uD835\uDE8E\uD835\uDE9B \uD835\uDFF7" + Colors.RESET + Colors.GREEN_BOLD_BRIGHT + " \uD835\uDEA0\uD835\uDE92\uD835\uDE97\uD835\uDE9C \uD835\uDE9D\uD835\uDE91\uD835\uDE8E \uD835\uDE80\uD835\uDE9E\uD835\uDE92\uD835\uDEA3 \uD835\uDEA0\uD835\uDE92\uD835\uDE9D\uD835\uDE91 " + player1Score + " \uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC2B\uD835\uDC1E\uD835\uDC1C\uD835\uDC2D \uD835\uDC1A\uD835\uDC27\uD835\uDC2C\uD835\uDC30\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C!\n\n" + Colors.RESET);
         } else if (player2Score > player1Score) {
-            System.out.println(Colors.GREEN_BOLD_BRIGHT + "\uD835\uDC0F\uD835\uDC25\uD835\uDC1A\uD835\uDC32\uD835\uDC1E\uD835\uDC2B \uD835\uDFD0 \uD835\uDC30\uD835\uDC22\uD835\uDC27\uD835\uDC2C \uD835\uDC2D\uD835\uDC21\uD835\uDC1E \uD835\uDC10\uD835\uDC2E\uD835\uDC22\uD835\uDC33 \uD835\uDC30\uD835\uDC22\uD835\uDC2D\uD835\uDC21 " + player2Score + Colors.RESET + Colors.GREEN_BOLD_BRIGHT + " \uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC2B\uD835\uDC1E\uD835\uDC1C\uD835\uDC2D \uD835\uDC1A\uD835\uDC27\uD835\uDC2C\uD835\uDC30\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C❗\n\n" + Colors.RESET);
+            System.out.println(Colors.MAGENTA_BOLD + "\uD835\uDC0F\uD835\uDC25\uD835\uDC1A\uD835\uDC32\uD835\uDC1E\uD835\uDC2B \uD835\uDFD0" + Colors.RESET + Colors.GREEN_BOLD_BRIGHT + " \uD835\uDC30\uD835\uDC22\uD835\uDC27\uD835\uDC2C \uD835\uDC2D\uD835\uDC21\uD835\uDC1E \uD835\uDC10\uD835\uDC2E\uD835\uDC22\uD835\uDC33 \uD835\uDC30\uD835\uDC22\uD835\uDC2D\uD835\uDC21 " + player2Score + " \uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC2B\uD835\uDC1E\uD835\uDC1C\uD835\uDC2D \uD835\uDC1A\uD835\uDC27\uD835\uDC2C\uD835\uDC30\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C!\n\n" + Colors.RESET);
         } else {
-            System.out.println(Colors.YELLOW_BOLD_BRIGHT + "\uD835\uDC08\uD835\uDC2D❜\uD835\uDC2C \uD835\uDC1A \uD835\uDC2D\uD835\uDC22\uD835\uDC1E❗ \uD835\uDC01\uD835\uDC28\uD835\uDC2D\uD835\uDC21 \uD835\uDC29\uD835\uDC25\uD835\uDC1A\uD835\uDC32\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C \uD835\uDC2C\uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC1E\uD835\uDC1D " + player1Score + Colors.RESET + Colors.YELLOW_BOLD_BRIGHT + " \uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC2B\uD835\uDC1E\uD835\uDC1C\uD835\uDC2D \uD835\uDC1A\uD835\uDC27\uD835\uDC2C\uD835\uDC30\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C❗\n\n" + Colors.RESET);
+            System.out.println(Colors.WHITE_BOLD_BRIGHT + "\uD835\uDC08\uD835\uDC2D❜\uD835\uDC2C \uD835\uDC1A \uD835\uDC2D\uD835\uDC22\uD835\uDC1E!" + Colors.RESET + Colors.GREEN_BOLD_BRIGHT + " \uD835\uDC01\uD835\uDC28\uD835\uDC2D\uD835\uDC21 \uD835\uDC29\uD835\uDC25\uD835\uDC1A\uD835\uDC32\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C \uD835\uDC2C\uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC1E\uD835\uDC1D " + player1Score + " \uD835\uDC1C\uD835\uDC28\uD835\uDC2B\uD835\uDC2B\uD835\uDC1E\uD835\uDC1C\uD835\uDC2D \uD835\uDC1A\uD835\uDC27\uD835\uDC2C\uD835\uDC30\uD835\uDC1E\uD835\uDC2B\uD835\uDC2C!\n\n" + Colors.RESET);
         }
     }
 }

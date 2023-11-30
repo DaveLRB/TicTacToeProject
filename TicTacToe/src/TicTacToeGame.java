@@ -82,12 +82,12 @@ public class TicTacToeGame {
         do {
             System.out.print(prompt);
             while (!input.hasNextInt()) {
-                System.out.println("Invalid input! Please enter a number.");
+                System.out.println(Colors.RED_BOLD_BRIGHT + "Invalid input! Please enter a number.\n" + Colors.RESET);
                 input.next();
             }
             inputMade = input.nextInt();
             if (inputMade < 1 || inputMade > 3) {
-                System.out.println("Invalid input. Please enter a value between 1 and 3.");
+                System.out.println(Colors.RED_BOLD_BRIGHT + "Invalid input. Please enter a value between 1 and 3.\n" + Colors.RESET);
             }
         } while (inputMade < 1 || inputMade > 3);
         return inputMade;
