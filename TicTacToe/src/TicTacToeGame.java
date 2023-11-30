@@ -12,8 +12,8 @@ public class TicTacToeGame {
 
     public TicTacToeGame() {
         board = new Board();
-        player1 = new Player(Colors.GREEN_BRIGHT + "X" + Colors.RESET);
-        player2 = new Player(Colors.RED_BRIGHT + "𝗢" + Colors.RESET);
+        player1 = new Player(Colors.YELLOW_BRIGHT + "X" + Colors.RESET);
+        player2 = new Player(Colors.MAGENTA_BRIGHT + "𝗢" + Colors.RESET);
         currentPlayer = player1;
         input = new Scanner(System.in);
         gameWon = false;
@@ -34,7 +34,7 @@ public class TicTacToeGame {
             int row, col;
             do {
                 row = getValidInput(Colors.WHITE_BOLD_BRIGHT + "\uD835\uDC38\uD835\uDC5B\uD835\uDC61\uD835\uDC52\uD835\uDC5F \uD835\uDC5F\uD835\uDC5C\uD835\uDC64: " + Colors.RESET) - 1;
-                col = getValidInput(Colors.WHITE_BOLD_BRIGHT + "\uD835\uDC38\uD835\uDC5B\uD835\uDC61\uD835\uDC52\uD835\uDC5F \uD835\uDC50\uD835\uDC5C\uD835\uDC59\uD835\uDC62\uD835\uDC5A\uD835\uDC5B:" + Colors.RESET) - 1;
+                col = getValidInput(Colors.WHITE_BOLD_BRIGHT + "\uD835\uDC38\uD835\uDC5B\uD835\uDC61\uD835\uDC52\uD835\uDC5F \uD835\uDC50\uD835\uDC5C\uD835\uDC59\uD835\uDC62\uD835\uDC5A\uD835\uDC5B:\n" + Colors.RESET) - 1;
             } while (!board.isValidMove(row, col));
 
             board.placeMove(row, col, currentPlayer.getSymbol());
@@ -66,7 +66,7 @@ public class TicTacToeGame {
 
 
     private void playerTurn(Player player) {
-        System.out.println(Colors.WHITE_BOLD_BRIGHT + "ℙ\uD835\uDD5D\uD835\uDD52\uD835\uDD6A\uD835\uDD56\uD835\uDD63 " + player.getSymbol() + Colors.WHITE_BOLD_BRIGHT + "❜\uD835\uDD64 \uD835\uDD65\uD835\uDD66\uD835\uDD63\uD835\uDD5F:" + Colors.RESET);
+        System.out.println(Colors.WHITE_BOLD_BRIGHT + "ℙ\uD835\uDD5D\uD835\uDD52\uD835\uDD6A\uD835\uDD56\uD835\uDD63 " + player.getSymbol() + Colors.WHITE_BOLD_BRIGHT + "❜\uD835\uDD64 \uD835\uDD65\uD835\uDD66\uD835\uDD63\uD835\uDD5F \n" + Colors.RESET);
     }
 
     public Board getBoard() {
