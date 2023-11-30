@@ -34,7 +34,8 @@ public class TicTacToeGame {
             int row, col;
             do {
                 row = getValidInput(Colors.WHITE_BOLD_BRIGHT + "\uD835\uDC38\uD835\uDC5B\uD835\uDC61\uD835\uDC52\uD835\uDC5F \uD835\uDC5F\uD835\uDC5C\uD835\uDC64: " + Colors.RESET) - 1;
-                col = getValidInput(Colors.WHITE_BOLD_BRIGHT + "\uD835\uDC38\uD835\uDC5B\uD835\uDC61\uD835\uDC52\uD835\uDC5F \uD835\uDC50\uD835\uDC5C\uD835\uDC59\uD835\uDC62\uD835\uDC5A\uD835\uDC5B:\n" + Colors.RESET) - 1;
+                col = getValidInput(Colors.WHITE_BOLD_BRIGHT + "\uD835\uDC38\uD835\uDC5B\uD835\uDC61\uD835\uDC52\uD835\uDC5F \uD835\uDC50\uD835\uDC5C\uD835\uDC59\uD835\uDC62\uD835\uDC5A\uD835\uDC5B: " + Colors.RESET) - 1;
+                System.out.println();
             } while (!board.isValidMove(row, col));
 
             board.placeMove(row, col, currentPlayer.getSymbol());
